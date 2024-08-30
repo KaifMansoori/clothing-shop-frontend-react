@@ -1,15 +1,15 @@
 /* eslint-disable react/prop-types */
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
-// import {useCart} from '../context/CartContext.jsx'
+import {useCart} from '../context/CartContext.jsx'
 import { Link } from 'react-router-dom';
 
 
 const ProductCard = ({ item }) => {
-  // const { addItemToCart } = useCart();
+  const { addItemToCart } = useCart();
 
-  // const handleAddToCart = () => {
-  //   addItemToCart(item);
-  // };
+  const handleAddToCart = () => {
+    addItemToCart(item);
+  };
 
   
 
@@ -27,10 +27,10 @@ const ProductCard = ({ item }) => {
           </p>
           <p>
             
-{/*             <button onClick={handleAddToCart} className="bg-gradient-to-r from-[#fac3da] to-[#d0cdfd]  text-white py-2 px-4 rounded-lg flex items-center space-x-2">
+            <button onClick={handleAddToCart} className="bg-gradient-to-r from-[#fac3da] to-[#d0cdfd]  text-white py-2 px-4 rounded-lg flex items-center space-x-2">
               <ShoppingBagIcon className="h-5 w-5  text-gray-950" />
               <span className=" text-gray-950">ADD</span>
-            </button> */}
+            </button>
           </p>
         </div>
       </div>
