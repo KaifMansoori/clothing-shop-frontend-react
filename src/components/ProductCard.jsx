@@ -8,7 +8,7 @@ const ProductCard = ({ item }) => {
   const { addItemToCart } = useCart();
 
   const handleAddToCart = () => {
-    addItemToCart(item);
+    addItemToCart(item, 1);
   };
 
   
