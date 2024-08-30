@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { useNavigate } from 'react-router-dom';
-
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useCart } from '../context/CartContext'; // Corrected import
 
@@ -31,7 +30,7 @@ const Cart = () => {
     } else {
       navigate('/checkout', { state: { cartItems } });
     }
-
+ 
     
   }
 

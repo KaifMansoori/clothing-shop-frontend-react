@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 
+/* eslint-disable react/prop-types */
 import { createContext, useContext, useReducer } from 'react';
 
 const CartContext = createContext();
@@ -14,13 +14,11 @@ const cartReducer = (state, action) => {
     case 'ADD_ITEM': {
       const existingItemIndex = state.items.findIndex(item => item.id === action.payload.id);
       if (existingItemIndex !== -1) {
-        // Update quantity if item exists
         const updatedItems = state.items.map((item, index) => 
           index === existingItemIndex ? { ...item, quantity: item.quantity + action.payload.quantity } : item
         );
         return { ...state, items: updatedItems };
       } else {
-        // Add new item if it doesn't exist
         return { ...state, items: [...state.items, action.payload] };
       }
     }
@@ -38,16 +36,15 @@ const cartReducer = (state, action) => {
   }
 };
 
-
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
-  const addItemToCart = (item) => {
-    const updatedItem = { ...item, quantity: 1 };
+  const addItemToCart = (item, quantity) => {
+    const updatedItem = { ...item, quantity };
     dispatch({ type: 'ADD_ITEM', payload: updatedItem });
     if (!state.isCartOpen) {
-        dispatch({ type: 'TOGGLE_CART' }); // Open the cart automatically if it's not open
-      }
+      dispatch({ type: 'TOGGLE_CART' });
+    }
   };
 
   const removeItemFromCart = (itemId) => {
@@ -78,7 +75,6 @@ export const CartProvider = ({ children }) => {
   );
 };
 
-// Custom hook to use the cart context
 export const useCart = () => {
   return useContext(CartContext);
 };

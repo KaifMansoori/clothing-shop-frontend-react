@@ -38,7 +38,7 @@ function Checkout() {
   const handleStateChange = (event) => {
     setState(event.target.value);
   };
-
+ 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('Form submitted!');

@@ -1,24 +1,16 @@
 /* eslint-disable react/prop-types */
 import logo from "../assets/rozy-clothing-logo-transparent.png";
-import {useCart} from '../context/CartContext.jsx'
+import {useCart} from '../context/CartContext.jsx';
+import { Link } from 'react-router-dom';
 
 import {
   ShoppingBagIcon,
-  MagnifyingGlassIcon,
-  XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { useState } from "react";
 import TopHeader from "./TopHeader";
-
-const Header = () => {
+ 
+const Header = () => { 
   const { cartItems, toggleCart} = useCart();
-
-
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const toggleSearch = () => {
-    setIsSearchOpen(!isSearchOpen);
-  };
-
+  
  
 
   return (
@@ -31,44 +23,20 @@ const Header = () => {
           </a>
           <ul className="flex items-center gap-4 uppercase">
             <li className="cursor-pointer text-sm">
-              New Arrival
+            <Link to="/new-arrival">New Arrival</Link>
             </li>
             <li className="cursor-pointer text-sm">
-              Custom Stitching
+            <Link to="/custom-stitching">Custom Stitching</Link> 
             </li>
             <li className="cursor-pointer text-sm">
-              Shop
+            <Link to="/shop">Shop</Link> 
             </li>
-            <li className="cursor-pointer text-sm">
-              Track Order
-            </li>
+            
           </ul>
           <ul className="flex items-center gap-4">
-            <li>
-              <button onClick={toggleSearch} className="text-white focus:outline-none">
-                <MagnifyingGlassIcon className="h-6 w-6 text-gray-500" />
-              </button>
-              {isSearchOpen && (
-                <div className="absolute top-[3.5rem] right-0 w-64 bg-white p-4 rounded-lg shadow-lg">
-                  <div className="flex items-center justify-between">
-                    <input
-                      type="text"
-                      placeholder="Search..."
-                      className="w-full px-2 py-1 border-b text-gray-500 focus:outline-none"
-                      autoFocus
-                    />
-                    <button onClick={toggleSearch} className="text-gray-500 hover:text-gray-700 focus:outline-none ml-2">
-                      <XMarkIcon className="h-5 w-5" />
-                    </button>
-                  </div>
-                </div>
-              )}
-            </li>
-            <li>
-              Wishlist
-            </li>
-            <li>
-              Login
+            
+            <li className="cursor-pointer text-sm">
+            <Link to="/account">LOGIN</Link> 
             </li>
             <li>
               <ShoppingBagIcon

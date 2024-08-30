@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import {useCart} from '../context/CartContext.jsx'
+import { Link } from 'react-router-dom';
+
 
 const ProductCard = ({ item }) => {
   const { addItemToCart } = useCart();
@@ -11,14 +13,14 @@ const ProductCard = ({ item }) => {
 
   
 
-  const {image, title, price}=item;
-  return (
+  const {image, title, price, id}=item;
+  return (<>
     <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white">
-      <img className="w-full h-auto object-contain" src={image} alt={title} />
+       <Link to={`/details/${id}`}><img className="w-full h-auto object-contain" src={image} alt={title} /></Link>
       <div className="px-3 py-2">
-        <div className="text-sm font-light mb-2 h-10 hover:underline uppercase">
+      <Link to={`/details/${item.id}`}><div className="text-sm font-light mb-2 h-10 hover:underline uppercase">
           {title}
-        </div>
+        </div></Link>
         <div className="flex items-center	 justify-between">
           <p className="text-gray-700 font-bold text-base text-lg p-2">
             ₹{price}
@@ -33,6 +35,8 @@ const ProductCard = ({ item }) => {
         </div>
       </div>
     </div>
+  </>
+    
   );
 };
 

@@ -1,4 +1,5 @@
 import { Fragment, useState } from "react";
+import { Link } from "react-router-dom";
 
 const TopHeader = () => {
     const [topHeaderHide, setTopHeaderHide]=useState(false);
@@ -36,12 +37,11 @@ const TopHeader = () => {
               </svg>
               Explore Our Collection of Beautiful Clothing
             </p>
-            <a
-              href="#"
-              className="flex-none rounded-full px-3.5 py-1 text-sm font-semibold text-gray-9 00 shadow-sm "
-            >
-              Shop Now <span aria-hidden="true">&rarr;</span>
-            </a>
+            
+             <Link className="flex-none rounded-full px-3.5 py-1 text-sm font-semibold text-gray-9 00 shadow-sm "
+ to="/shop">Shop <span aria-hidden="true">&rarr;</span></Link> 
+             
+           
           </div>
           <div className="flex flex-1 justify-end">
             <button onClick={handleClick}
